@@ -1,0 +1,29 @@
+[project]
+name = "ts-ptg-utils"
+version = "0.1.0"
+description = "Convert RubinTV metadata to tpoint format for computing pointing models."
+readme = "README.md"
+authors = [
+    { name = "Tiago Ribeiro", email = "tiago.ribeiro@noirlab.edu" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "click",
+    "numpy",
+    "astropy",
+    "lsst-summit-utils",
+    "lsst-efd-client[async]",
+]
+
+[project.scripts]
+ts-ptg-utils = "ts_ptg_utils:main"
+meta2tpoint = "ts_ptg_utils.meta2tpoint:main"
+
+[build-system]
+requires = ["uv_build>=0.8.22,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.uv.workspace]
+members = [
+    "ts_ptg_utils",
+]
