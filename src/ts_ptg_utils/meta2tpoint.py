@@ -49,7 +49,7 @@ def main(
     metadata_dir: str,
     instrument: str,
 ) -> None:
-    asyncio.run(amain())
+    asyncio.run(amain(day_obs=day_obs, program=program,metadata_dir=metadata_dir, instrument=instrument))
 
 async def amain(
     day_obs: int,
