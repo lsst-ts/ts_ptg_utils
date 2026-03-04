@@ -43,7 +43,15 @@ logger = logging.getLogger(__name__)
     help="Butler instrument name",
 )
 
-async def main(
+def main(
+    day_obs: int,
+    program: str,
+    metadata_dir: str,
+    instrument: str,
+) -> None:
+    asyncio.run(amain())
+
+async def amain(
     day_obs: int,
     program: str,
     metadata_dir: str,
@@ -205,4 +213,4 @@ def write_tpoint_file(
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
