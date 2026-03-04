@@ -42,7 +42,8 @@ logger = logging.getLogger(__name__)
     type=str,
     help="Butler instrument name",
 )
-def main(
+
+async def main(
     day_obs: int,
     program: str,
     metadata_dir: str,
@@ -67,9 +68,7 @@ def main(
     efd_client = lsst_efd_client.EfdClient("summit_efd")
     butler = makeDefaultButler(instrument)
 
-    tpoint_data = asyncio.run(
-        process_visits(visit_ids, day_obs, butler, efd_client, location)
-    )
+    tpoint_data = await process_visits(visit_ids, day_obs, butler, efd_client, location)
 
     month_names = [
         "January",
@@ -206,4 +205,4 @@ def write_tpoint_file(
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
